@@ -2,6 +2,10 @@ package com.empresa.entity;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -26,9 +30,12 @@ public class Empleado {
 	private String nombres;
 	
 	@Temporal(TemporalType.DATE)
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd" , timezone = "America/Lima")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date fechaNacimiento;
 	private int estado;
 	@Temporal(TemporalType.TIMESTAMP)
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd hh🇲🇲ss")
 	private Date fechaRegistro;
 	
 	@ManyToOne
